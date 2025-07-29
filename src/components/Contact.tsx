@@ -43,10 +43,9 @@ const Contact: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // Send to Telegram Bot
-      const telegramBotToken = '7732880124:AAHPFmN07CFwgkGu3UoINUYG3_PxzJcrp-U'; // Replace with your bot token
-      const telegramChatId = '5798029484'; // Replace with your chat ID
-      
+      const telegramBotToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+      const telegramChatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+
       const message = `
 🔔 New Contact Form Submission
 
@@ -60,7 +59,7 @@ const Contact: React.FC = () => {
       `;
 
       const telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
-      
+
       await fetch(telegramUrl, {
         method: 'POST',
         headers: {
@@ -82,6 +81,7 @@ const Contact: React.FC = () => {
       setIsSubmitting(false);
     }
   };
+
 
   const contactInfo = [
     {
