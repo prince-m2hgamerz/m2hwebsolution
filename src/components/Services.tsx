@@ -23,7 +23,7 @@ const Services: React.FC = () => {
       description: 'Full-stack web development with modern technologies like React, Node.js, and databases.',
       features: ['Responsive Design', 'Modern Frameworks', 'Database Integration', 'API Development'],
       gradient: 'from-blue-500 to-cyan-500',
-      price: 'Starting ₹15,000'
+      price: ''
     },
     {
       icon: <Palette className="w-12 h-12 text-purple-500" />,
@@ -31,7 +31,7 @@ const Services: React.FC = () => {
       description: 'Create beautiful, user-friendly interfaces that convert visitors into customers.',
       features: ['User Research', 'Wireframing', 'Prototyping', 'Visual Design'],
       gradient: 'from-purple-500 to-pink-500',
-      price: 'Starting ₹8,000'
+      price: ''
     },
     {
       icon: <ShoppingCart className="w-12 h-12 text-green-500" />,
@@ -39,7 +39,7 @@ const Services: React.FC = () => {
       description: 'Build powerful online stores with secure payment integration and inventory management.',
       features: ['Payment Gateway', 'Inventory Management', 'Order Tracking', 'Mobile Commerce'],
       gradient: 'from-green-500 to-emerald-500',
-      price: 'Starting ₹25,000'
+      price: ''
     },
     {
       icon: <Search className="w-12 h-12 text-yellow-500" />,
@@ -47,7 +47,7 @@ const Services: React.FC = () => {
       description: 'Improve your search engine rankings and drive organic traffic to your website.',
       features: ['Keyword Research', 'On-page SEO', 'Technical SEO', 'Performance Optimization'],
       gradient: 'from-yellow-500 to-orange-500',
-      price: 'Starting ₹5,000/month'
+      price: ''
     },
     {
       icon: <Smartphone className="w-12 h-12 text-red-500" />,
@@ -55,7 +55,7 @@ const Services: React.FC = () => {
       description: 'Native and cross-platform mobile applications for iOS and Android.',
       features: ['React Native', 'Flutter', 'Native iOS/Android', 'Cross-platform'],
       gradient: 'from-red-500 to-pink-500',
-      price: 'Starting ₹30,000'
+      price: ''
     },
     {
       icon: <Settings className="w-12 h-12 text-gray-500" />,
@@ -63,7 +63,7 @@ const Services: React.FC = () => {
       description: 'Keep your website secure, updated, and running smoothly with our maintenance services.',
       features: ['Security Updates', 'Performance Monitoring', 'Bug Fixes', 'Content Updates'],
       gradient: 'from-gray-500 to-slate-500',
-      price: 'Starting ₹3,000/month'
+      price: ''
     },
     {
       icon: <Cloud className="w-12 h-12 text-indigo-500" />,
@@ -71,7 +71,7 @@ const Services: React.FC = () => {
       description: 'Reliable cloud hosting solutions with fast deployment and excellent uptime.',
       features: ['AWS/Azure Hosting', 'SSL Certificates', 'Domain Management', 'Backup Solutions'],
       gradient: 'from-indigo-500 to-blue-500',
-      price: 'Starting ₹2,000/month'
+      price: ''
     },
     {
       icon: <TrendingUp className="w-12 h-12 text-pink-500" />,
@@ -79,7 +79,7 @@ const Services: React.FC = () => {
       description: 'Boost your online presence with comprehensive digital marketing strategies.',
       features: ['Social Media Marketing', 'PPC Advertising', 'Content Marketing', 'Analytics'],
       gradient: 'from-pink-500 to-rose-500',
-      price: 'Starting ₹10,000/month'
+      price: ''
     },
     {
       icon: <Database className="w-12 h-12 text-teal-500" />,
@@ -87,7 +87,7 @@ const Services: React.FC = () => {
       description: 'Professional database design, optimization, and management services.',
       features: ['Database Design', 'Performance Tuning', 'Data Migration', 'Backup & Recovery'],
       gradient: 'from-teal-500 to-cyan-500',
-      price: 'Starting ₹8,000'
+      price: ''
     },
     {
       icon: <Shield className="w-12 h-12 text-orange-500" />,
@@ -95,7 +95,7 @@ const Services: React.FC = () => {
       description: 'Comprehensive security solutions to protect your website from threats.',
       features: ['SSL Implementation', 'Malware Protection', 'Security Audits', 'Firewall Setup'],
       gradient: 'from-orange-500 to-red-500',
-      price: 'Starting ₹5,000'
+      price: ''
     },
     {
       icon: <Zap className="w-12 h-12 text-violet-500" />,
@@ -103,7 +103,7 @@ const Services: React.FC = () => {
       description: 'Speed up your website with advanced performance optimization techniques.',
       features: ['Speed Optimization', 'CDN Setup', 'Image Compression', 'Code Minification'],
       gradient: 'from-violet-500 to-purple-500',
-      price: 'Starting ₹6,000'
+      price: ''
     },
     {
       icon: <Globe className="w-12 h-12 text-emerald-500" />,
@@ -111,7 +111,7 @@ const Services: React.FC = () => {
       description: 'Professional domain registration and business email setup services.',
       features: ['Domain Registration', 'Business Email', 'DNS Management', 'Email Security'],
       gradient: 'from-emerald-500 to-green-500',
-      price: 'Starting ₹1,500/year'
+      price: ''
     }
   ];
 

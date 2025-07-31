@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
   const [isTyping, setIsTyping] = useState(true);
 
   const texts = [
-    'Modern Web Development',
+    'Web Development',
     'Digital Solutions',
     'Custom Applications',
     'SEO Optimization'
@@ -109,7 +109,7 @@ const Hero: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 1 }}
               >
-                <span className="text-gray-900 dark:text-white">We Build</span>
+                <span className="text-gray-900 dark:text-white">We Offer</span>
                 <br />
                 <span className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                   {currentText}

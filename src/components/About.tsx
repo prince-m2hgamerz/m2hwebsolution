@@ -357,20 +357,20 @@ const About: React.FC = () => {
             </motion.h3>
             
             <motion.p 
-              className="text-base lg:text-lg leading-relaxed mb-4"
+              className="text-base leading-relaxed mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
-              Founded in 2022, M2H Web Solution began as a small team of passionate developers 
+              Founded in 2025, M2H Web Solution began as a small team of passionate developers 
               with a big vision. We recognized the growing need for businesses to establish 
               a strong digital presence and decided to bridge that gap with innovative, 
               affordable web solutions.
             </motion.p>
             
             <motion.p 
-              className="text-base lg:text-lg leading-relaxed"
+              className="text-base lg:text-lgleading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
