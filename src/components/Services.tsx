@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Code, 
   Palette, 
@@ -16,6 +17,8 @@ import {
 import { motion } from 'framer-motion';
 
 const Services: React.FC = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
       icon: <Code className="w-12 h-12 text-blue-500" />,
@@ -23,7 +26,7 @@ const Services: React.FC = () => {
       description: 'Full-stack web development with modern technologies like React, Node.js, and databases.',
       features: ['Responsive Design', 'Modern Frameworks', 'Database Integration', 'API Development'],
       gradient: 'from-blue-500 to-cyan-500',
-      price: ''
+      price: 25000
     },
     {
       icon: <Palette className="w-12 h-12 text-purple-500" />,
@@ -31,7 +34,7 @@ const Services: React.FC = () => {
       description: 'Create beautiful, user-friendly interfaces that convert visitors into customers.',
       features: ['User Research', 'Wireframing', 'Prototyping', 'Visual Design'],
       gradient: 'from-purple-500 to-pink-500',
-      price: ''
+      price: 15000
     },
     {
       icon: <ShoppingCart className="w-12 h-12 text-green-500" />,
@@ -39,7 +42,7 @@ const Services: React.FC = () => {
       description: 'Build powerful online stores with secure payment integration and inventory management.',
       features: ['Payment Gateway', 'Inventory Management', 'Order Tracking', 'Mobile Commerce'],
       gradient: 'from-green-500 to-emerald-500',
-      price: ''
+      price: 35000
     },
     {
       icon: <Search className="w-12 h-12 text-yellow-500" />,
@@ -47,7 +50,7 @@ const Services: React.FC = () => {
       description: 'Improve your search engine rankings and drive organic traffic to your website.',
       features: ['Keyword Research', 'On-page SEO', 'Technical SEO', 'Performance Optimization'],
       gradient: 'from-yellow-500 to-orange-500',
-      price: ''
+      price: 12000
     },
     {
       icon: <Smartphone className="w-12 h-12 text-red-500" />,
@@ -55,7 +58,7 @@ const Services: React.FC = () => {
       description: 'Native and cross-platform mobile applications for iOS and Android.',
       features: ['React Native', 'Flutter', 'Native iOS/Android', 'Cross-platform'],
       gradient: 'from-red-500 to-pink-500',
-      price: ''
+      price: 45000
     },
     {
       icon: <Settings className="w-12 h-12 text-gray-500" />,
@@ -63,7 +66,7 @@ const Services: React.FC = () => {
       description: 'Keep your website secure, updated, and running smoothly with our maintenance services.',
       features: ['Security Updates', 'Performance Monitoring', 'Bug Fixes', 'Content Updates'],
       gradient: 'from-gray-500 to-slate-500',
-      price: ''
+      price: 8000
     },
     {
       icon: <Cloud className="w-12 h-12 text-indigo-500" />,
@@ -71,7 +74,7 @@ const Services: React.FC = () => {
       description: 'Reliable cloud hosting solutions with fast deployment and excellent uptime.',
       features: ['AWS/Azure Hosting', 'SSL Certificates', 'Domain Management', 'Backup Solutions'],
       gradient: 'from-indigo-500 to-blue-500',
-      price: ''
+      price: 10000
     },
     {
       icon: <TrendingUp className="w-12 h-12 text-pink-500" />,
@@ -79,7 +82,7 @@ const Services: React.FC = () => {
       description: 'Boost your online presence with comprehensive digital marketing strategies.',
       features: ['Social Media Marketing', 'PPC Advertising', 'Content Marketing', 'Analytics'],
       gradient: 'from-pink-500 to-rose-500',
-      price: ''
+      price: 18000
     },
     {
       icon: <Database className="w-12 h-12 text-teal-500" />,
@@ -87,7 +90,7 @@ const Services: React.FC = () => {
       description: 'Professional database design, optimization, and management services.',
       features: ['Database Design', 'Performance Tuning', 'Data Migration', 'Backup & Recovery'],
       gradient: 'from-teal-500 to-cyan-500',
-      price: ''
+      price: 20000
     },
     {
       icon: <Shield className="w-12 h-12 text-orange-500" />,
@@ -95,7 +98,7 @@ const Services: React.FC = () => {
       description: 'Comprehensive security solutions to protect your website from threats.',
       features: ['SSL Implementation', 'Malware Protection', 'Security Audits', 'Firewall Setup'],
       gradient: 'from-orange-500 to-red-500',
-      price: ''
+      price: 15000
     },
     {
       icon: <Zap className="w-12 h-12 text-violet-500" />,
@@ -103,7 +106,7 @@ const Services: React.FC = () => {
       description: 'Speed up your website with advanced performance optimization techniques.',
       features: ['Speed Optimization', 'CDN Setup', 'Image Compression', 'Code Minification'],
       gradient: 'from-violet-500 to-purple-500',
-      price: ''
+      price: 12000
     },
     {
       icon: <Globe className="w-12 h-12 text-emerald-500" />,
@@ -111,10 +114,21 @@ const Services: React.FC = () => {
       description: 'Professional domain registration and business email setup services.',
       features: ['Domain Registration', 'Business Email', 'DNS Management', 'Email Security'],
       gradient: 'from-emerald-500 to-green-500',
-      price: ''
+      price: 5000
     }
   ];
 
+  const handleServiceSelect = (service: any) => {
+    navigate('/checkout', { 
+      state: { 
+        selectedService: {
+          title: service.title,
+          price: service.price,
+          description: service.description
+        }
+      }
+    });
+  };
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -246,9 +260,10 @@ const Services: React.FC = () => {
 
                 {/* Price */}
                 <div className="text-center mb-3">
-                  <span className={`text-xs font-semibold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
-                    {service.price}
+                  <span className={`text-lg font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
+                    ₹{service.price.toLocaleString()}
                   </span>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Starting from</p>
                 </div>
 
 {/* Features */}
@@ -271,6 +286,17 @@ const Services: React.FC = () => {
   ))}
 </ul>
 
+                {/* Order Button */}
+                <div className="mt-4">
+                  <motion.button
+                    onClick={() => handleServiceSelect(service)}
+                    className={`w-full glass-card dark:glass-card-dark bg-gradient-to-r ${service.gradient} text-white px-4 py-2 rounded-xl font-semibold text-sm hover:shadow-lg transition-all duration-300`}
+                    whileHover={{ scale: 1.02, y: -1 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Order Now
+                  </motion.button>
+                </div>
               </div>
             </motion.div>
           ))}

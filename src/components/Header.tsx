@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Code, Zap, LogIn, UserPlus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
@@ -7,6 +8,7 @@ import UserProfile from './UserProfile';
 import AuthModal from './auth/AuthModal';
 
 const Header: React.FC = () => {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
@@ -53,6 +55,8 @@ const Header: React.FC = () => {
             {/* Logo */}
             <motion.div 
               className="flex items-center space-x-3"
+              as={Link}
+              to="/"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
@@ -73,25 +77,42 @@ const Header: React.FC = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6">
-              {['home', 'about', 'services', 'portfolio', 'testimonials', 'contact'].map((item, index) => (
+              {location.pathname === '/' ? (
+                ['home', 'about', 'services', 'portfolio', 'testimonials', 'contact'].map((item, index) => (
+                  <motion.button
+                    key={item}
+                    onClick={() => scrollToSection(item)}
+                    className="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 capitalize"
+                    whileHover={{ scale: 1.05, y: -1 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {item}
+                    <motion.div
+                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"
+                      whileHover={{ width: "100%" }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.button>
+                ))
+              ) : (
                 <motion.button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
+                  as={Link}
+                  to="/"
                   className="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 capitalize"
                   whileHover={{ scale: 1.05, y: -1 }}
                   whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
                 >
-                  {item}
+                  Home
                   <motion.div
                     className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"
                     whileHover={{ width: "100%" }}
                     transition={{ duration: 0.3 }}
                   />
                 </motion.button>
-              ))}
+              )}
               <ThemeToggle />
               
               {!loading && (
@@ -171,19 +192,30 @@ const Header: React.FC = () => {
                 className="lg:hidden glass-card dark:glass-card-dark rounded-xl mt-3 overflow-hidden"
               >
                 <div className="px-4 py-6 space-y-4">
-                  {['home', 'about', 'services', 'portfolio', 'testimonials', 'contact'].map((item, index) => (
+                  {location.pathname === '/' ? (
+                    ['home', 'about', 'services', 'portfolio', 'testimonials', 'contact'].map((item, index) => (
+                      <motion.button
+                        key={item}
+                        onClick={() => scrollToSection(item)}
+                        className="block w-full text-left text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 py-2 capitalize transition-colors duration-300"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        whileHover={{ x: 5 }}
+                      >
+                        {item}
+                      </motion.button>
+                    ))
+                  ) : (
                     <motion.button
-                      key={item}
-                      onClick={() => scrollToSection(item)}
+                      as={Link}
+                      to="/"
                       className="block w-full text-left text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 py-2 capitalize transition-colors duration-300"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
                       whileHover={{ x: 5 }}
                     >
-                      {item}
+                      Home
                     </motion.button>
-                  ))}
+                  )}
                   
                   {!loading && !user && (
                     <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-700">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Code, 
   Zap, 
@@ -268,10 +269,15 @@ const Footer: React.FC = () => {
             </motion.p>
             
             <div className="flex space-x-6 mt-4 md:mt-0">
-              {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((link, index) => (
+              {[
+                { name: 'Privacy Policy', path: '/privacy-policy' },
+                { name: 'Terms of Service', path: '/terms-of-service' },
+                { name: 'Refund Policy', path: '/refund-policy' }
+              ].map((link, index) => (
                 <motion.a 
                   key={index}
-                  href="#" 
+                  as={Link}
+                  to={link.path}
                   className="text-gray-300 hover:text-white text-base transition-colors duration-300"
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -279,7 +285,7 @@ const Footer: React.FC = () => {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   whileHover={{ y: -2 }}
                 >
-                  {link}
+                  {link.name}
                 </motion.a>
               ))}
             </div>
