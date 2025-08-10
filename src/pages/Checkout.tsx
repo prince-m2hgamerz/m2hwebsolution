@@ -16,6 +16,7 @@ import {
   ArrowLeft,
   Shield
 } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 declare global {
   interface Window {
@@ -44,12 +45,13 @@ interface CheckoutProps {
 }
 
 const Checkout: React.FC<CheckoutProps> = ({ selectedService }) => {
+  const location = useLocation();
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   // Default service if none selected
-  const service = selectedService || {
+  const service = selectedService || location.state?.selectedService || {
     title: 'Custom Web Development',
     price: 25000,
     description: 'Professional website development with modern design and functionality'
