@@ -1,11 +1,24 @@
 import { neon } from '@neondatabase/serverless';
 
-const sql = neon(import.meta.env.VITE_DATABASE_URL);
+const databaseUrl = import.meta.env.VITE_DATABASE_URL;
+
+if (!databaseUrl || databaseUrl === 'postgresql://username:password@hostname:5432/database_name') {
+  console.warn('Database URL not configured. Database features will be disabled.');
+}
+
+const sql = databaseUrl && databaseUrl !== 'postgresql://username:password@hostname:5432/database_name' 
+  ? neon(databaseUrl) 
+  : null;
 
 export { sql };
 
 // Initialize database tables
 export const initializeDatabase = async () => {
+  if (!sql) {
+    console.warn('Database not configured. Skipping database initialization.');
+    return;
+  }
+  
   try {
     // Create users table if it doesn't exist
     await sql`

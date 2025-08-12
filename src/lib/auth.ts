@@ -18,6 +18,13 @@ export interface AuthResponse {
 const SESSION_KEY = 'user_session';
 
 export const registerUser = async (name: string, email: string, password: string): Promise<AuthResponse> => {
+  if (!sql) {
+    return {
+      success: false,
+      message: 'Database not configured. Please contact support.'
+    };
+  }
+  
   try {
     // Check if user already exists
     const existingUser = await sql`
@@ -60,6 +67,13 @@ export const registerUser = async (name: string, email: string, password: string
 };
 
 export const loginUser = async (email: string, password: string): Promise<AuthResponse> => {
+  if (!sql) {
+    return {
+      success: false,
+      message: 'Database not configured. Please contact support.'
+    };
+  }
+  
   try {
     // Find user and verify password
     const result = await sql`
@@ -98,6 +112,10 @@ export const loginUser = async (email: string, password: string): Promise<AuthRe
 };
 
 export const getCurrentUser = async (): Promise<User | null> => {
+  if (!sql) {
+    return null;
+  }
+  
   try {
     const sessionData = localStorage.getItem(SESSION_KEY);
     const userId = Cookies.get('user_id');
