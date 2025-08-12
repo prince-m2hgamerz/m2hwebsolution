@@ -147,7 +147,7 @@ const Checkout: React.FC<CheckoutProps> = ({ selectedService }) => {
 
       // Razorpay options
       const options = {
-        key: 'rzp_test_9WaeLb4ndt8osh', // Replace with your actual Razorpay key
+        key: 'rzp_test_htKfpLD3QXIdWQ', // Replace with your actual Razorpay key
         amount: order.amount,
         currency: order.currency,
         name: 'M2H Web Solution',
